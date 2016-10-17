@@ -46,13 +46,11 @@ foreach ($user in (Get-Content "$OutputDir\ADGroup-$ADGroup.txt"))
 
 {
 
-
-write-host ($user)
-$ConnectSession = Get-BrokerSession -ApplicationInUse $AppName | Where-Object { $_.BrokerUser -match $user }
+$ConnectSession = Get-BrokerSession -ApplicationInUse $AppName | Where-Object { $_.BrokerUser -match '$user' }
 if ($ConnectSession) {
 $row = New-Object System.Object
 $row | Add-Member -MemberType NoteProperty -Name "User" -Value $user # create a property called UserID. This will be the UserID column
-Get-BrokerSession -ApplicationInUse $AppName | Where-Object { $_.BrokerUser -match $user } | Send-BrokerSessionMessage -MessageStyle Information -Text "This is a test from the Citrix team" -Title "Citrix Team"
+Get-BrokerSession -ApplicationInUse $AppName | Where-Object { $_.BrokerUser -match '$user' } | Send-BrokerSessionMessage -MessageStyle Information -Text "This is a test from the Citrix team" -Title "Citrix Team"
 $row | Add-Member -MemberType NoteProperty -Name "Status" -Value "Notified" # create a property called UserID. This will be the UserID column
 $csvContents += $row # append the new data to the array
 write-host ("$user is currently using Connect on Session Host: $ConnectSession")
