@@ -26,7 +26,7 @@ $ConnectSession = Get-XASession -BrowserName connect | Where-Object { $_.Account
 if ($ConnectSession) {
 $row = New-Object System.Object
 $row | Add-Member -MemberType NoteProperty -Name "User" -Value $user # create a property called UserID. This will be the UserID column
-Get-XASession | Where-Object { $_.AccountName -match $user } | Send-XASessionMessage -MessageTitle "Attn: Staff Members" -MessageBody "You are receiving this notification because the new Connect icon 
+Get-XASession | Where-Object { $_.AccountName -match $user } | Send-XASessionMessage -MessageTitle "Attn: Staff Members" -MessageBody "You are receiving this notification because the new app icon 
 has been published to your facility and your login.
 
 PLEASE begin using the Connect icon.  If you experience any issues 
