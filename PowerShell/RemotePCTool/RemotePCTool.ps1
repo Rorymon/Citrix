@@ -14,8 +14,8 @@ Add-Type -AssemblyName System.Drawing
 
 #---------------------------------------------------------[Form]--------------------------------------------------------
 [System.Windows.Forms.Application]::EnableVisualStyles()
-$domainprefix = "SLHNAZ"
-$adminaddressapps = "C1VPWCTXDCAP20.slhnaz.org"
+$domainprefix = <Domain>
+$adminaddressapps = <DDC>
 $FormatEnumerationLimit=-1
 
 $AssignmentSearchForm                    = New-Object system.Windows.Forms.Form
