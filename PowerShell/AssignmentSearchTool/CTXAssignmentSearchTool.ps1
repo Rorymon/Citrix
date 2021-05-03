@@ -15,8 +15,8 @@ Add-Type -AssemblyName System.Drawing
 #---------------------------------------------------------[Form]--------------------------------------------------------
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
-$adminaddressepic = "C1VPWCTXDCAP05.slhnaz.org"
-$adminaddressapps = "C1VPWCTXDCAP20.slhnaz.org"
+$adminaddress01 = "Insert DDC FQDN for Site"
+$adminaddress02 = "Insert DDC FQDN for Site"
 $FormatEnumerationLimit=-1
 
 $AssignmentSearchForm                    = New-Object system.Windows.Forms.Form
@@ -135,8 +135,9 @@ if (!$strinput) {
 else
 {
 
-$appas = Get-BrokerApplication -AdminAddress C1VPWCTXDCAP20.slhnaz.org -Enabled $true | Where-Object {$_.ApplicationName  -like "*$strinput*"} | Select ApplicationName, AssociatedUserFullNames | Format-Table -AutoSize | Out-String
-$appas += Get-BrokerApplication -AdminAddress C1VPWCTXDCAP05.slhnaz.org -Enabled $true | Where-Object {$_.ApplicationName  -like "*$strinput*"} | Select ApplicationName, AssociatedUserFullNames | Format-Table -AutoSize | Out-String
+$appas = Get-BrokerApplication -AdminAddress $adminaddress01 -Enabled $true | Where-Object {$_.ApplicationName  -like "*$strinput*"} | Select ApplicationName, AssociatedUserFullNames | Format-Table -AutoSize | Out-String
+$appas += Get-BrokerApplication -AdminAddress $adminaddress02 
+-Enabled $true | Where-Object {$_.ApplicationName  -like "*$strinput*"} | Select ApplicationName, AssociatedUserFullNames | Format-Table -AutoSize | Out-String
 
 }
 
